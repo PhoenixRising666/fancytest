@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Fancy Page</title>
+
+    <!-- BEGIN LivePerson Monitor. -->
+    <script type="text/javascript">
+        window.lpTag = window.lpTag || {};
+        if (typeof window.lpTag._tagCount === 'undefined') {
+            window.lpTag = {
+                site: '69795382' || '',
+                section: lpTag.section || '',
+                autoStart: lpTag.autoStart === false ? false : true,
+                ovr: lpTag.ovr || {
+                    domain: 'lptag-a.liveperson.net',
+                    tagjs: 'tags-a.liveperson.net'
+                },
+                _v: '1.5.1',
+                _tagCount: 1,
+                protocol: location.protocol,
+                events: {
+                    bind: function (app, ev, fn) {
+                        lpTag.defer(function () {
+                            lpTag.events.bind(app, ev, fn);
+                        }, 0);
+                    },
+                    trigger: function (app, ev, json) {
+                        lpTag.defer(function () {
+                            lpTag.events.trigger(app, ev, json);
+                        }, 1);
+                    }
+                },
+                defer: function (fn, fnType) {
+                    if (fnType == 0) {
+                        this._defB = this._defB || [];
+                        this._defB.push(fn);
+                    } else if (fnType == 1) {
+                        this._defT = this._defT || [];
+                        this._defT.push(fn);
+                    } else {
+                        this._defL = this._defL || [];
+                        this._defL.push(fn);
+                    }
+                },
+                load: function (src, chr, id) {
+                    var t = this;
+                    setTimeout(function () {
+                        t._load(src, chr, id);
+                    }, 0);
+                },
+                _load: function (src, chr, id) {
+                    var url = src;
+                    if (!src) {
+                        url = this.protocol + '//' + ((this.ovr && this.ovr.domain) ? this.ovr.domain : 'lptag.liveperson.net') + '/tag/tag.js?site=' + this.site;
+                    }
+                    var s = document.createElement('script');
+                    s.setAttribute('charset', chr ? chr : 'UTF-8');
+                    if (id) {
+                        s.setAttribute('id', id);
+                    }
+                    s.setAttribute('src', url);
+                    document.getElementsByTagName('head').item(0).appendChild(s);
+                },
+                init: function () {
+                    this._timing = this._timing || {};
+                    this._timing.start = (new Date()).getTime();
+                    var that = this;
+                    if (window.attachEvent) {
+                        window.attachEvent('onload', function () {
+                            that._domReady('domReady');
+                        });
+                    } else {
+                        window.addEventListener('DOMContentLoaded', function () {
+                            that._domReady('contReady');
+                        }, false);
+                        window.addEventListener('load', function () {
+                            that._domReady('domReady');
+                        }, false);
+                    }
+                    if (typeof (window._lptStop) == 'undefined') {
+                        this.load();
+                    }
+                },
+                start: function () {
+                    this.autoStart = true;
+                },
+                _domReady: function (n) {
+                    if (!this.isDom) {
+                        this.isDom = true;
+                        this.events.trigger('LPT', 'DOM_READY', {
+                            t: n
+                        });
+                    }
+                    this._timing[n] = (new Date()).getTime();
+                },
+                vars: lpTag.vars || [],
+                dbs: lpTag.dbs || [],
+                ctn: lpTag.ctn || [],
+                sdes: lpTag.sdes || [],
+                ev: lpTag.ev || []
+            };
+            lpTag.init();
+        } else {
+            window.lpTag._tagCount += 1;
+        }
+    </script>
+    <!-- END LivePerson Monitor. -->
+
+    <!-- Add jQuery library -->
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+
+    <!-- Add mousewheel plugin (this is optional) -->
+    <script type="text/javascript" src="fancybox/lib/jquery.mousewheel-3.0.6.pack.js"></script>
+
+    <!-- Add fancyBox -->
+    <link rel="stylesheet" href="fancybox/source/jquery.fancybox.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/jquery.fancybox.pack.js"></script>
+
+    <!-- Optionally add helpers - button, thumbnail and/or media -->
+    <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-buttons.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-buttons.js"></script>
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-media.js"></script>
+
+    <link rel="stylesheet" href="fancybox/source/helpers/jquery.fancybox-thumbs.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="fancybox/source/helpers/jquery.fancybox-thumbs.js"></script>
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#various1").fancybox({
+                'transitionIn': 'elastic'
+            });
+
+        });
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#various1').on('click', function () window.setTimeout(
+                function () {
+                    $('.next-button').on('click', function () {
+                        $(".lebtn div").trigger("click");
+                        $(".fancybox-close").trigger("click");
+                        console.log(0);
+                    });
+                }), 1000);
+
+        });
+    </script>
+
+</head>
+
+<body>
+    <a id="various1" href="#inline1">Survey</a>
+    <div style="display: none;">
+        <div id="inline1">
+
+            <div>
+                <div>
+                    <script src="https://www.surveymonkey.com/jsEmbed.aspx?sm=fKTgn7J6N1zh5YH3U7MAXw_3d_3d">
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="lebtn">
+        <div id="fancy" style="display:none;"></div>
+    </a>
+
+</body>
+
+</html>
